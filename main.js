@@ -197,8 +197,8 @@ function calculatePCBuild() {
     });
 
     let pcBuild = {
-        GPU: maxGPU,
-        CPU: maxCPU,
+        GPU: maxGPU.model,
+        CPU: maxCPU.model,
         RAM: maxRAM,
     };
 
