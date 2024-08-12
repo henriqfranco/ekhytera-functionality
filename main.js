@@ -126,11 +126,13 @@ const games = [
     },
 ]
 
-let selectedGames = [
-    games.find(game => game.name === 'valorant'),
-    games.find(game => game.name === 'fortnite'),
-    games.find(game => game.name === 'gtaV'),
-];
+const fortnite = games.find(game => game.name === 'fortnite');
+const valorant = games.find(game => game.name === 'valorant');
+const cs2 = games.find(game => game.name === 'cs2');
+const lol = games.find(game => game.name === 'lol');
+const gtaV = games.find(game => game.name === 'gtaV');
+
+let selectedGames = [];
 
 let maxGPU = selectedGames[0].minHardware.GPU;
 let maxCPU = selectedGames[0].minHardware.CPU;
