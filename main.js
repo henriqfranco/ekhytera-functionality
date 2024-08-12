@@ -132,28 +132,75 @@ const cs2 = games.find(game => game.name === 'cs2');
 const lol = games.find(game => game.name === 'lol');
 const gtaV = games.find(game => game.name === 'gtaV');
 
+let fortniteButton = document.getElementById('fort');
+let valorantButton = document.getElementById('val');
+let cs2Button = document.getElementById('cs');
+let lolButton = document.getElementById('league');
+let gtaButton = document.getElementById('gta');
+
+let gameOptionsDiv = document.getElementById('gameOptions');
+let gameSelection = document.getElementById('gameSelection');
+let pc = document.getElementById('pc');
+
 let selectedGames = [];
 
-let maxGPU = selectedGames[0].minHardware.GPU;
-let maxCPU = selectedGames[0].minHardware.CPU;
-let maxRAM = selectedGames[0].minHardware.RAM;
+fortniteButton.addEventListener('click', function () {
+    gameOptionsDiv.removeChild(fortniteButton);
+    gameSelection.appendChild(fortniteButton);
+    selectedGames.push(fortnite);
+    calculatePCBuild();
+})
 
-selectedGames.forEach(game => {
-    if (game.minHardware.GPU.rating > maxGPU.rating) {
-        maxGPU = game.minHardware.GPU;
-    }
-    if (game.minHardware.CPU.rating > maxCPU.rating) {
-        maxCPU = game.minHardware.CPU;
-    }
-    if (game.minHardware.RAM > maxRAM) {
-        maxRAM = game.minHardware.RAM;
-    }
-});
+valorantButton.addEventListener('click', function () {
+    gameOptionsDiv.removeChild(valorantButton);
+    gameSelection.appendChild(valorantButton);
+    selectedGames.push(valorant);
+    calculatePCBuild();
+})
 
-let pcBuild = {};
+cs2Button.addEventListener('click', function () {
+    gameOptionsDiv.removeChild(cs2Button);
+    gameSelection.appendChild(cs2Button);
+    selectedGames.push(cs2);
+    calculatePCBuild();
+})
 
-pcBuild.GPU = maxGPU;
-pcBuild.CPU = maxCPU;
-pcBuild.RAM = maxRAM;
+lolButton.addEventListener('click', function () {
+    gameOptionsDiv.removeChild(lolButton);
+    gameSelection.appendChild(lolButton);
+    selectedGames.push(lol);
+    calculatePCBuild();
+})
 
-console.log(pcBuild);
+gtaButton.addEventListener('click', function () {
+    gameOptionsDiv.removeChild(gtaButton);
+    gameSelection.appendChild(gtaButton);
+    selectedGames.push(gtaV);
+    calculatePCBuild();
+})
+
+function calculatePCBuild() {
+    let maxGPU = selectedGames[0].minHardware.GPU;
+    let maxCPU = selectedGames[0].minHardware.CPU;
+    let maxRAM = selectedGames[0].minHardware.RAM;
+
+    selectedGames.forEach(game => {
+        if (game.minHardware.GPU.rating > maxGPU.rating) {
+            maxGPU = game.minHardware.GPU;
+        }
+        if (game.minHardware.CPU.rating > maxCPU.rating) {
+            maxCPU = game.minHardware.CPU;
+        }
+        if (game.minHardware.RAM > maxRAM) {
+            maxRAM = game.minHardware.RAM;
+        }
+    });
+
+    let pcBuild = {
+        GPU: maxGPU,
+        CPU: maxCPU,
+        RAM: maxRAM
+    };
+
+    pc.textContent = JSON.stringify(pcBuild, null, 2);
+}
