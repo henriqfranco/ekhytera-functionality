@@ -199,7 +199,7 @@ function calculatePCBuild() {
     let pcBuild = {
         GPU: maxGPU,
         CPU: maxCPU,
-        RAM: maxRAM
+        RAM: maxRAM,
     };
 
     pc.textContent = JSON.stringify(pcBuild, null, 2);
