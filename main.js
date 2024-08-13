@@ -144,103 +144,131 @@ let pc = document.getElementById('pc');
 let selectedGames = [];
 
 fortniteButton.addEventListener('click', function () {
-    if(fortniteButton.style.textDecoration == ''){
+    if (fortniteButton.style.textDecoration == '') {
         fortniteButton.style.textDecoration = 'line-through'
+        selectedGames.push(fortnite);
     }
-    else{
+    else {
         fortniteButton.style.textDecoration = ''
+        const index = selectedGames.indexOf(fortnite);
+        if (index > -1) {
+            selectedGames.splice(index, 1);
+        }
     }
-    selectedGames.push(fortnite);
-})
+});
 
 valorantButton.addEventListener('click', function () {
-    if(valorantButton.style.textDecoration == ''){
+    if (valorantButton.style.textDecoration == '') {
         valorantButton.style.textDecoration = 'line-through'
+        selectedGames.push(valorant);
     }
-    else{
+    else {
         valorantButton.style.textDecoration = ''
+        const index = selectedGames.indexOf(valorant);
+        if (index > -1) {
+            selectedGames.splice(index, 1);
+        }
     }
-    selectedGames.push(valorant);
-})
+});
 
 cs2Button.addEventListener('click', function () {
-    if(cs2Button.style.textDecoration == ''){
+    if (cs2Button.style.textDecoration == '') {
         cs2Button.style.textDecoration = 'line-through'
+        selectedGames.push(cs2);
     }
-    else{
+    else {
         cs2Button.style.textDecoration = ''
+        const index = selectedGames.indexOf(cs2);
+        if (index > -1) {
+            selectedGames.splice(index, 1);
+        }
     }
-    selectedGames.push(cs2);
-})
+});
 
 lolButton.addEventListener('click', function () {
-    if(lolButton.style.textDecoration == ''){
+    if (lolButton.style.textDecoration == '') {
         lolButton.style.textDecoration = 'line-through'
+        selectedGames.push(lol);
     }
-    else{
+    else {
         lolButton.style.textDecoration = ''
+        const index = selectedGames.indexOf(lol);
+        if (index > -1) {
+            selectedGames.splice(index, 1);
+        }
     }
-    selectedGames.push(lol);
-})
+});
 
 gtaButton.addEventListener('click', function () {
-    if(gtaButton.style.textDecoration == ''){
+    if (gtaButton.style.textDecoration == '') {
         gtaButton.style.textDecoration = 'line-through'
+        selectedGames.push(gtaV);
     }
-    else{
+    else {
         gtaButton.style.textDecoration = ''
+        const index = selectedGames.indexOf(gtaV);
+        if (index > -1) {
+            selectedGames.splice(index, 1);
+        }
     }
-    selectedGames.push(gtaV);
-})
+});
 
 function calculateRecSpecsPC() {
-    let maxGPU = selectedGames[0].recHardware.GPU;
-    let maxCPU = selectedGames[0].recHardware.CPU;
-    let maxRAM = selectedGames[0].recHardware.RAM;
+    if (selectedGames.length === 0) {
+        pc.textContent = 'no games selected';
+    } else {
+        let maxGPU = selectedGames[0].recHardware.GPU;
+        let maxCPU = selectedGames[0].recHardware.CPU;
+        let maxRAM = selectedGames[0].recHardware.RAM;
 
-    selectedGames.forEach(game => {
-        if (game.recHardware.GPU.rating > maxGPU.rating) {
-            maxGPU = game.recHardware.GPU;
-        }
-        if (game.recHardware.CPU.rating > maxCPU.rating) {
-            maxCPU = game.recHardware.CPU;
-        }
-        if (game.minHardware.RAM > maxRAM) {
-            maxRAM = game.recHardware.RAM;
-        }
-    });
+        selectedGames.forEach(game => {
+            if (game.recHardware.GPU.rating > maxGPU.rating) {
+                maxGPU = game.recHardware.GPU;
+            }
+            if (game.recHardware.CPU.rating > maxCPU.rating) {
+                maxCPU = game.recHardware.CPU;
+            }
+            if (game.recHardware.RAM > maxRAM) {
+                maxRAM = game.recHardware.RAM;
+            }
+        });
 
-    let pcBuild = {
-        GPU: maxGPU.model,
-        CPU: maxCPU.model,
-        RAM: maxRAM,
-    };
+        let pcBuild = {
+            GPU: maxGPU.model,
+            CPU: maxCPU.model,
+            RAM: maxRAM,
+        };
 
-    pc.textContent = JSON.stringify(pcBuild, null, 2);
+        pc.textContent = JSON.stringify(pcBuild, null, 2);
+    }
 }
 
 function calculateMinSpecsPC() {
-    let maxGPU = selectedGames[0].minHardware.GPU;
-    let maxCPU = selectedGames[0].minHardware.CPU;
-    let maxRAM = selectedGames[0].minHardware.RAM;
+    if (selectedGames.length === 0) {
+        pc.textContent = 'no games selected';
+    } else {
+        let maxGPU = selectedGames[0].minHardware.GPU;
+        let maxCPU = selectedGames[0].minHardware.CPU;
+        let maxRAM = selectedGames[0].minHardware.RAM;
 
-    selectedGames.forEach(game => {
-        if (game.minHardware.GPU.rating > maxGPU.rating) {
-            maxGPU = game.minHardware.GPU;
-        }
-        if (game.minHardware.CPU.rating > maxCPU.rating) {
-            maxCPU = game.minHardware.CPU;
-        }
-        if (game.minHardware.RAM > maxRAM) {
-            maxRAM = game.minHardware.RAM;
-        }
-    });
+        selectedGames.forEach(game => {
+            if (game.minHardware.GPU.rating > maxGPU.rating) {
+                maxGPU = game.minHardware.GPU;
+            }
+            if (game.minHardware.CPU.rating > maxCPU.rating) {
+                maxCPU = game.minHardware.CPU;
+            }
+            if (game.minHardware.RAM > maxRAM) {
+                maxRAM = game.minHardware.RAM;
+            }
+        });
 
-    let pcBuild = {
-        GPU: maxGPU.model,
-        CPU: maxCPU.model,
-        RAM: maxRAM,
-    };
+        let pcBuild = {
+            GPU: maxGPU.model,
+            CPU: maxCPU.model,
+            RAM: maxRAM,
+        };
 
-    pc.textContent = JSON.stringify(pcBuild, null, 2);
+        pc.textContent = JSON.stringify(pcBuild, null, 2);
+    }
 }
