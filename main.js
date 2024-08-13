@@ -139,38 +139,57 @@ let lolButton = document.getElementById('league');
 let gtaButton = document.getElementById('gta');
 
 let gameOptionsDiv = document.getElementById('gameOptions');
-let gameSelection = document.getElementById('gameSelection');
 let pc = document.getElementById('pc');
 
 let selectedGames = [];
 
 fortniteButton.addEventListener('click', function () {
-    gameOptionsDiv.removeChild(fortniteButton);
-    gameSelection.appendChild(fortniteButton);
+    if(fortniteButton.style.textDecoration == ''){
+        fortniteButton.style.textDecoration = 'line-through'
+    }
+    else{
+        fortniteButton.style.textDecoration = ''
+    }
     selectedGames.push(fortnite);
 })
 
 valorantButton.addEventListener('click', function () {
-    gameOptionsDiv.removeChild(valorantButton);
-    gameSelection.appendChild(valorantButton);
+    if(valorantButton.style.textDecoration == ''){
+        valorantButton.style.textDecoration = 'line-through'
+    }
+    else{
+        valorantButton.style.textDecoration = ''
+    }
     selectedGames.push(valorant);
 })
 
 cs2Button.addEventListener('click', function () {
-    gameOptionsDiv.removeChild(cs2Button);
-    gameSelection.appendChild(cs2Button);
+    if(cs2Button.style.textDecoration == ''){
+        cs2Button.style.textDecoration = 'line-through'
+    }
+    else{
+        cs2Button.style.textDecoration = ''
+    }
     selectedGames.push(cs2);
 })
 
 lolButton.addEventListener('click', function () {
-    gameOptionsDiv.removeChild(lolButton);
-    gameSelection.appendChild(lolButton);
+    if(lolButton.style.textDecoration == ''){
+        lolButton.style.textDecoration = 'line-through'
+    }
+    else{
+        lolButton.style.textDecoration = ''
+    }
     selectedGames.push(lol);
 })
 
 gtaButton.addEventListener('click', function () {
-    gameOptionsDiv.removeChild(gtaButton);
-    gameSelection.appendChild(gtaButton);
+    if(gtaButton.style.textDecoration == ''){
+        gtaButton.style.textDecoration = 'line-through'
+    }
+    else{
+        gtaButton.style.textDecoration = ''
+    }
     selectedGames.push(gtaV);
 })
 
