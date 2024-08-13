@@ -216,7 +216,8 @@ gtaButton.addEventListener('click', function () {
 function calculateRecSpecsPC() {
     if (selectedGames.length === 0) {
         pc.textContent = 'no games selected';
-    } else {
+    }
+    else {
         let maxGPU = selectedGames[0].recHardware.GPU;
         let maxCPU = selectedGames[0].recHardware.CPU;
         let maxRAM = selectedGames[0].recHardware.RAM;
@@ -246,7 +247,8 @@ function calculateRecSpecsPC() {
 function calculateMinSpecsPC() {
     if (selectedGames.length === 0) {
         pc.textContent = 'no games selected';
-    } else {
+    }
+    else {
         let maxGPU = selectedGames[0].minHardware.GPU;
         let maxCPU = selectedGames[0].minHardware.CPU;
         let maxRAM = selectedGames[0].minHardware.RAM;
