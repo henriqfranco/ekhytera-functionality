@@ -6,3 +6,7 @@ div{
 p{
     cursor: pointer;
 }
+
+.buildButtons{
+    border: none;
+}
