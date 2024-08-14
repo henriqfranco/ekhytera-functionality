@@ -205,7 +205,7 @@ function calculateRecSpecsPC() {
             RAM: maxRAM,
         };
 
-        pc.textContent = JSON.stringify(pcBuild, null, 2);
+        pc.textContent = Object.values(pcBuild).join(' / ');
     }
 }
 
@@ -236,6 +236,6 @@ function calculateMinSpecsPC() {
             RAM: maxRAM,
         };
 
-        pc.textContent = JSON.stringify(pcBuild, null, 2);
+        pc.textContent = Object.values(pcBuild).join(' / ');
     }
 }
