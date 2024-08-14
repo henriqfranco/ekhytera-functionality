@@ -143,75 +143,40 @@ let pc = document.getElementById('pc');
 
 let selectedGames = [];
 
-fortniteButton.addEventListener('click', function () {
-    if (fortniteButton.style.textDecoration == '') {
-        fortniteButton.style.textDecoration = 'line-through'
-        selectedGames.push(fortnite);
+function selectionToggler(button, game) {
+    if (button.style.textDecoration === '') {
+        button.style.textDecoration = 'line-through';
+        selectedGames.push(game);
     }
     else {
-        fortniteButton.style.textDecoration = ''
-        const index = selectedGames.indexOf(fortnite);
+        button.style.textDecoration = '';
+        const index = selectedGames.indexOf(game);
         if (index > -1) {
             selectedGames.splice(index, 1);
         }
     }
+}
+
+fortniteButton.addEventListener('click', function () {
+    selectionToggler(fortniteButton, fortnite);
 });
 
 valorantButton.addEventListener('click', function () {
-    if (valorantButton.style.textDecoration == '') {
-        valorantButton.style.textDecoration = 'line-through'
-        selectedGames.push(valorant);
-    }
-    else {
-        valorantButton.style.textDecoration = ''
-        const index = selectedGames.indexOf(valorant);
-        if (index > -1) {
-            selectedGames.splice(index, 1);
-        }
-    }
+    selectionToggler(valorantButton, valorant);
 });
 
 cs2Button.addEventListener('click', function () {
-    if (cs2Button.style.textDecoration == '') {
-        cs2Button.style.textDecoration = 'line-through'
-        selectedGames.push(cs2);
-    }
-    else {
-        cs2Button.style.textDecoration = ''
-        const index = selectedGames.indexOf(cs2);
-        if (index > -1) {
-            selectedGames.splice(index, 1);
-        }
-    }
+    selectionToggler(cs2Button, cs2);
 });
 
 lolButton.addEventListener('click', function () {
-    if (lolButton.style.textDecoration == '') {
-        lolButton.style.textDecoration = 'line-through'
-        selectedGames.push(lol);
-    }
-    else {
-        lolButton.style.textDecoration = ''
-        const index = selectedGames.indexOf(lol);
-        if (index > -1) {
-            selectedGames.splice(index, 1);
-        }
-    }
+    selectionToggler(lolButton, lol);
 });
 
 gtaButton.addEventListener('click', function () {
-    if (gtaButton.style.textDecoration == '') {
-        gtaButton.style.textDecoration = 'line-through'
-        selectedGames.push(gtaV);
-    }
-    else {
-        gtaButton.style.textDecoration = ''
-        const index = selectedGames.indexOf(gtaV);
-        if (index > -1) {
-            selectedGames.splice(index, 1);
-        }
-    }
+    selectionToggler(gtaButton, gtaV);
 });
+
 
 function calculateRecSpecsPC() {
     if (selectedGames.length === 0) {
