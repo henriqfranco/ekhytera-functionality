@@ -124,7 +124,7 @@ const games = [
             RAM: 8,
         },
     },
-]
+];
 
 const fortnite = games.find(game => game.name === 'fortnite');
 const valorant = games.find(game => game.name === 'valorant');
